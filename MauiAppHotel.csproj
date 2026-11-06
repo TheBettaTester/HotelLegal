@@ -1,0 +1,87 @@
+﻿
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net10.0-android</TargetFrameworks>
+        <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">net10.0-android;net10.0-windows10.0.19041.0</TargetFrameworks>
+
+        <OutputType>Exe</OutputType>
+        <RootNamespace>MauiAppHotel</RootNamespace>
+        <UseMaui>true</UseMaui>
+        <SingleProject>true</SingleProject>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+
+        <!-- Versão do MAUI -->
+        <MauiVersion>10.0.110</MauiVersion>
+
+        <!-- Aplicativo -->
+        <ApplicationTitle>Hotel Legal</ApplicationTitle>
+        <ApplicationId>com.companyname.mauiapphotel</ApplicationId>
+        <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+        <ApplicationVersion>1</ApplicationVersion>
+
+        <!-- Executar Windows sem MSIX -->
+        <WindowsPackageType Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">None</WindowsPackageType>
+
+        <!-- Plataformas suportadas -->
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+        <TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <!-- Ícone -->
+        <MauiIcon Include="Resources\AppIcon\appicon.svg"
+                  ForegroundFile="Resources\AppIcon\appiconfg.svg"
+                  Color="#512BD4" />
+
+        <!-- Tela de abertura -->
+        <MauiSplashScreen Include="Resources\Splash\splash.svg"
+                          Color="#512BD4"
+                          BaseSize="128,128" />
+
+        <!-- Imagens -->
+        <MauiImage Include="Resources\Images\*" />
+        <MauiImage Update="Resources\Images\dotnet_bot.png"
+                   Resize="True"
+                   BaseSize="300,185" />
+
+        <!-- Fontes -->
+        <MauiFont Include="Resources\Fonts\*" />
+
+        <!-- Arquivos adicionais -->
+        <MauiAsset Include="Resources\Raw\**"
+                   LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Resources\Fonts\Kalam-Bold.ttf" />
+        <None Remove="Resources\Fonts\Kalam-Light.ttf" />
+        <None Remove="Resources\Fonts\Kalam-Regular.ttf" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <!-- Dependências -->
+        <PackageReference Include="Microsoft.Maui.Controls"
+                          Version="$(MauiVersion)" />
+
+        <PackageReference Include="Microsoft.Maui.Controls.Compatibility"
+                          Version="$(MauiVersion)" />
+
+        <PackageReference Include="Microsoft.Extensions.Logging.Debug"
+                          Version="8.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <!-- Páginas XAML -->
+        <MauiXaml Update="Views\ContratacaoHospedagem.xaml">
+            <Generator>MSBuild:Compile</Generator>
+        </MauiXaml>
+
+        <MauiXaml Update="Views\HospedagemContratada.xaml">
+            <Generator>MSBuild:Compile</Generator>
+        </MauiXaml>
+    </ItemGroup>
+
+</Project>

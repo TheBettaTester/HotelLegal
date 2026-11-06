@@ -1,0 +1,18 @@
+
+# Arquivos temporários do .NET
+bin/
+obj/
+*.tmp
+*.bak
+
+# Configurações locais do Visual Studio
+.vs/
+.vscode/
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos de usuário
+*.user
+*.suo

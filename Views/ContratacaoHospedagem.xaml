@@ -1,0 +1,209 @@
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppHotel.Views.ContratacaoHospedagem"
+             Title="Contratação de Hospedagem"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#F5F3FA">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20"
+                             Spacing="20">
+
+            <!-- Cabeçalho -->
+            <Border BackgroundColor="#512BD4"
+                    StrokeThickness="0"
+                    Padding="22"
+                    StrokeShape="RoundRectangle 20">
+
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="HOTEL LEGAL"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           TextColor="#DFD8F7"
+                           HorizontalTextAlignment="Start"/>
+
+                    <Label Text="Sua estadia começa aqui!"
+                           FontSize="27"
+                           FontFamily="Kalam"
+                           TextColor="White"
+                           HorizontalTextAlignment="Start"/>
+
+                    <Label Text="Preencha os dados para calcular sua diária."
+                           FontSize="13"
+                           TextColor="White"
+                           HorizontalTextAlignment="Start"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Hóspedes -->
+            <Border BackgroundColor="White"
+                    Stroke="#E5E0F0"
+                    StrokeThickness="1"
+                    Padding="18"
+                    StrokeShape="RoundRectangle 18">
+
+                <VerticalStackLayout Spacing="15">
+
+                    <Label Text="01. Hóspedes"
+                           FontSize="19"
+                           FontAttributes="Bold"
+                           TextColor="#512BD4"
+                           HorizontalTextAlignment="Start"/>
+
+                    <Grid ColumnDefinitions="*,Auto,Auto"
+                          RowDefinitions="Auto,Auto"
+                          RowSpacing="15"
+                          ColumnSpacing="12">
+
+                        <Label Grid.Row="0"
+                               Grid.Column="0"
+                               Text="Adultos"
+                               FontSize="15"
+                               VerticalOptions="Center"
+                               HorizontalTextAlignment="Start"/>
+
+                        <Label Grid.Row="0"
+                               Grid.Column="1"
+                               Text="{Binding Value, Source={x:Reference stp_adultos}}"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               TextColor="#512BD4"
+                               VerticalOptions="Center"/>
+
+                        <Stepper Grid.Row="0"
+                                 Grid.Column="2"
+                                 x:Name="stp_adultos"
+                                 Minimum="0"
+                                 Maximum="10"
+                                 Increment="1"/>
+
+                        <Label Grid.Row="1"
+                               Grid.Column="0"
+                               Text="Crianças"
+                               FontSize="15"
+                               VerticalOptions="Center"
+                               HorizontalTextAlignment="Start"/>
+
+                        <Label Grid.Row="1"
+                               Grid.Column="1"
+                               Text="{Binding Value, Source={x:Reference stp_criancas}}"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               TextColor="#512BD4"
+                               VerticalOptions="Center"/>
+
+                        <Stepper Grid.Row="1"
+                                 Grid.Column="2"
+                                 x:Name="stp_criancas"
+                                 Minimum="0"
+                                 Maximum="10"
+                                 Increment="1"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Acomodação -->
+            <Border BackgroundColor="White"
+                    Stroke="#E5E0F0"
+                    StrokeThickness="1"
+                    Padding="18"
+                    StrokeShape="RoundRectangle 18">
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Label Text="02. Acomodação"
+                           FontSize="19"
+                           FontAttributes="Bold"
+                           TextColor="#512BD4"
+                           HorizontalTextAlignment="Start"/>
+
+                    <Label Text="Escolha sua suíte"
+                           FontSize="14"
+                           TextColor="#666666"
+                           HorizontalTextAlignment="Start"/>
+
+                    <Picker x:Name="pck_quarto"
+                            Title="Selecione sua acomodação"
+                            TitleColor="#888888"
+                            TextColor="#242424"
+                            BackgroundColor="#F5F3FA"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Período -->
+            <Border BackgroundColor="White"
+                    Stroke="#E5E0F0"
+                    StrokeThickness="1"
+                    Padding="18"
+                    StrokeShape="RoundRectangle 18">
+
+                <VerticalStackLayout Spacing="15">
+
+                    <Label Text="03. Período da estadia"
+                           FontSize="19"
+                           FontAttributes="Bold"
+                           TextColor="#512BD4"
+                           HorizontalTextAlignment="Start"/>
+
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Check-in"
+                               FontSize="14"
+                               TextColor="#666666"
+                               HorizontalTextAlignment="Start"/>
+
+                        <DatePicker x:Name="dtpck_checkin"
+                                    Format="dd/MM/yyyy"
+                                    BackgroundColor="#F5F3FA"/>
+                    </VerticalStackLayout>
+
+                    <BoxView HeightRequest="1"
+                             Color="#E5E0F0"/>
+
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Check-out"
+                               FontSize="14"
+                               TextColor="#666666"
+                               HorizontalTextAlignment="Start"/>
+
+                        <DatePicker x:Name="dtpck_checkout"
+                                    Format="dd/MM/yyyy"
+                                    BackgroundColor="#F5F3FA"/>
+                    </VerticalStackLayout>
+
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Botão avançar -->
+            <Button Text="AVANÇAR"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    TextColor="White"
+                    BackgroundColor="#512BD4"
+                    CornerRadius="14"
+                    HeightRequest="55"/>
+
+            <!-- Rodapé -->
+            <Label Text="Hotel Legal • Sua experiência começa aqui."
+                   FontSize="11"
+                   TextColor="#888888"
+                   HorizontalTextAlignment="Center"
+                   Margin="0,0,0,0"/>
+
+            <!-- Botão Sobre -->
+            <Button Text="SOBRE O APLICATIVO"
+                    Clicked="Sobre_Clicked"
+                    BackgroundColor="White"
+                    TextColor="#512BD4"
+                    BorderColor="#512BD4"
+                    BorderWidth="1"
+                    CornerRadius="12"
+                    FontAttributes="Bold"
+                    FontSize="12"
+                    HeightRequest="45"
+                    Margin="0,0,0,10"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
