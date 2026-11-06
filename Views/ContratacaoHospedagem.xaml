@@ -2,206 +2,475 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiAppHotel.Views.ContratacaoHospedagem"
-             Title="Contratação de Hospedagem"
+             Title="Hotel Legal"
              NavigationPage.HasNavigationBar="False"
-             BackgroundColor="#F5F3FA">
+             BackgroundColor="#F7F5FC">
 
     <ScrollView>
-        <VerticalStackLayout Padding="20"
-                             Spacing="20">
+        <VerticalStackLayout Padding="22" Spacing="20">
 
             <!-- Cabeçalho -->
-            <Border BackgroundColor="#512BD4"
+            <Border BackgroundColor="#6C55B8"
                     StrokeThickness="0"
-                    Padding="22"
+                    Padding="24"
+                    StrokeShape="RoundRectangle 24">
+
+                <VerticalStackLayout Spacing="9">
+
+                    <Label Text="HOTEL LEGAL"
+                           FontSize="15"
+                           FontAttributes="Bold"
+                           CharacterSpacing="2"
+                           TextColor="#E9E2FA"
+                           FontFamily="OpenSansSemibold"/>
+
+                    <Label x:Name="lbl_boas_vindas"
+                           Text="Sua estadia começa aqui!"
+                           FontSize="27"
+                           FontFamily="KalamBold"
+                           TextColor="White"/>
+
+                    <Label x:Name="lbl_descricao_inicial"
+                           Text="Planeje sua próxima experiência com conforto e tranquilidade."
+                           FontSize="13"
+                           TextColor="#F3EFFD"
+                           FontFamily="OpenSansRegular"/>
+
+                    <Border BackgroundColor="#8876C9"
+                            StrokeThickness="0"
+                            Padding="10,7"
+                            HorizontalOptions="Start"
+                            StrokeShape="RoundRectangle 12">
+
+                        <Label x:Name="lbl_reserve_estadia"
+                               Text="✦ RESERVE SUA ESTADIA"
+                               FontSize="10"
+                               FontAttributes="Bold"
+                               TextColor="White"/>
+                    </Border>
+
+                    <!-- Seletor de idioma -->
+                    <Label x:Name="lbl_idioma"
+                           Text="Idioma"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           Margin="0,8,0,0"/>
+
+                    <Border BackgroundColor="#F7F5FC"
+                            StrokeThickness="0"
+                            Padding="5"
+                            StrokeShape="RoundRectangle 12">
+
+                        <Picker x:Name="pck_idioma"
+                                Title="Idioma"
+                                TextColor="#484454"
+                                TitleColor="#8B8499"
+                                FontFamily="OpenSansRegular"/>
+                    </Border>
+
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- 01. Hóspedes -->
+            <Border BackgroundColor="White"
+                    Stroke="#E9E2F5"
+                    StrokeThickness="1"
+                    Padding="20"
                     StrokeShape="RoundRectangle 20">
 
-                <VerticalStackLayout Spacing="8">
-                    <Label Text="HOTEL LEGAL"
-                           FontSize="16"
-                           FontAttributes="Bold"
-                           TextColor="#DFD8F7"
-                           HorizontalTextAlignment="Start"/>
+                <VerticalStackLayout Spacing="17">
 
-                    <Label Text="Sua estadia começa aqui!"
-                           FontSize="27"
-                           FontFamily="Kalam"
-                           TextColor="White"
-                           HorizontalTextAlignment="Start"/>
+                    <Label x:Name="lbl_titulo_hospedes"
+                           Text="01. Hóspedes"
+                           FontSize="21"
+                           FontFamily="KalamBold"
+                           TextColor="#6C55B8"/>
 
-                    <Label Text="Preencha os dados para calcular sua diária."
+                    <Label x:Name="lbl_descricao_hospedes"
+                           Text="Informe quantas pessoas participarão da hospedagem."
                            FontSize="13"
-                           TextColor="White"
-                           HorizontalTextAlignment="Start"/>
-                </VerticalStackLayout>
-            </Border>
+                           TextColor="#777282"/>
 
-            <!-- Hóspedes -->
-            <Border BackgroundColor="White"
-                    Stroke="#E5E0F0"
-                    StrokeThickness="1"
-                    Padding="18"
-                    StrokeShape="RoundRectangle 18">
+                    <!-- Adultos -->
+                    <Grid ColumnDefinitions="*,Auto,Auto,Auto"
+                          ColumnSpacing="10">
 
-                <VerticalStackLayout Spacing="15">
-
-                    <Label Text="01. Hóspedes"
-                           FontSize="19"
-                           FontAttributes="Bold"
-                           TextColor="#512BD4"
-                           HorizontalTextAlignment="Start"/>
-
-                    <Grid ColumnDefinitions="*,Auto,Auto"
-                          RowDefinitions="Auto,Auto"
-                          RowSpacing="15"
-                          ColumnSpacing="12">
-
-                        <Label Grid.Row="0"
-                               Grid.Column="0"
+                        <Label x:Name="lbl_adultos"
                                Text="Adultos"
-                               FontSize="15"
-                               VerticalOptions="Center"
-                               HorizontalTextAlignment="Start"/>
-
-                        <Label Grid.Row="0"
-                               Grid.Column="1"
-                               Text="{Binding Value, Source={x:Reference stp_adultos}}"
-                               FontSize="16"
-                               FontAttributes="Bold"
-                               TextColor="#512BD4"
-                               VerticalOptions="Center"/>
-
-                        <Stepper Grid.Row="0"
-                                 Grid.Column="2"
-                                 x:Name="stp_adultos"
-                                 Minimum="0"
-                                 Maximum="10"
-                                 Increment="1"/>
-
-                        <Label Grid.Row="1"
-                               Grid.Column="0"
-                               Text="Crianças"
-                               FontSize="15"
-                               VerticalOptions="Center"
-                               HorizontalTextAlignment="Start"/>
-
-                        <Label Grid.Row="1"
-                               Grid.Column="1"
-                               Text="{Binding Value, Source={x:Reference stp_criancas}}"
-                               FontSize="16"
-                               FontAttributes="Bold"
-                               TextColor="#512BD4"
-                               VerticalOptions="Center"/>
-
-                        <Stepper Grid.Row="1"
-                                 Grid.Column="2"
-                                 x:Name="stp_criancas"
-                                 Minimum="0"
-                                 Maximum="10"
-                                 Increment="1"/>
-                    </Grid>
-                </VerticalStackLayout>
-            </Border>
-
-            <!-- Acomodação -->
-            <Border BackgroundColor="White"
-                    Stroke="#E5E0F0"
-                    StrokeThickness="1"
-                    Padding="18"
-                    StrokeShape="RoundRectangle 18">
-
-                <VerticalStackLayout Spacing="12">
-
-                    <Label Text="02. Acomodação"
-                           FontSize="19"
-                           FontAttributes="Bold"
-                           TextColor="#512BD4"
-                           HorizontalTextAlignment="Start"/>
-
-                    <Label Text="Escolha sua suíte"
-                           FontSize="14"
-                           TextColor="#666666"
-                           HorizontalTextAlignment="Start"/>
-
-                    <Picker x:Name="pck_quarto"
-                            Title="Selecione sua acomodação"
-                            TitleColor="#888888"
-                            TextColor="#242424"
-                            BackgroundColor="#F5F3FA"/>
-                </VerticalStackLayout>
-            </Border>
-
-            <!-- Período -->
-            <Border BackgroundColor="White"
-                    Stroke="#E5E0F0"
-                    StrokeThickness="1"
-                    Padding="18"
-                    StrokeShape="RoundRectangle 18">
-
-                <VerticalStackLayout Spacing="15">
-
-                    <Label Text="03. Período da estadia"
-                           FontSize="19"
-                           FontAttributes="Bold"
-                           TextColor="#512BD4"
-                           HorizontalTextAlignment="Start"/>
-
-                    <VerticalStackLayout Spacing="5">
-                        <Label Text="Check-in"
                                FontSize="14"
-                               TextColor="#666666"
-                               HorizontalTextAlignment="Start"/>
+                               FontFamily="OpenSansSemibold"
+                               TextColor="#484454"
+                               VerticalOptions="Center"/>
 
-                        <DatePicker x:Name="dtpck_checkin"
-                                    Format="dd/MM/yyyy"
-                                    BackgroundColor="#F5F3FA"/>
-                    </VerticalStackLayout>
+                        <Button Grid.Column="1"
+                                Text="−"
+                                Clicked="DiminuirAdultos_Clicked"
+                                BackgroundColor="#E9E2FA"
+                                TextColor="#6C55B8"
+                                FontSize="20"
+                                FontAttributes="Bold"
+                                WidthRequest="42"
+                                HeightRequest="42"
+                                Padding="0"
+                                CornerRadius="10"/>
+
+                        <Label x:Name="lbl_adultos_quantidade"
+                               Grid.Column="2"
+                               Text="1"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="#6C55B8"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               WidthRequest="30"/>
+
+                        <Button Grid.Column="3"
+                                Text="+"
+                                Clicked="AumentarAdultos_Clicked"
+                                BackgroundColor="#6C55B8"
+                                TextColor="White"
+                                FontSize="20"
+                                FontAttributes="Bold"
+                                WidthRequest="42"
+                                HeightRequest="42"
+                                Padding="0"
+                                CornerRadius="10"/>
+
+                    </Grid>
 
                     <BoxView HeightRequest="1"
-                             Color="#E5E0F0"/>
+                             Color="#EEEAF5"/>
 
-                    <VerticalStackLayout Spacing="5">
-                        <Label Text="Check-out"
+                    <!-- Crianças -->
+                    <Grid ColumnDefinitions="*,Auto,Auto,Auto"
+                          ColumnSpacing="10">
+
+                        <Label x:Name="lbl_criancas"
+                               Text="Crianças"
                                FontSize="14"
-                               TextColor="#666666"
-                               HorizontalTextAlignment="Start"/>
+                               FontFamily="OpenSansSemibold"
+                               TextColor="#484454"
+                               VerticalOptions="Center"/>
 
-                        <DatePicker x:Name="dtpck_checkout"
-                                    Format="dd/MM/yyyy"
-                                    BackgroundColor="#F5F3FA"/>
-                    </VerticalStackLayout>
+                        <Button Grid.Column="1"
+                                Text="−"
+                                Clicked="DiminuirCriancas_Clicked"
+                                BackgroundColor="#E9E2FA"
+                                TextColor="#6C55B8"
+                                FontSize="20"
+                                FontAttributes="Bold"
+                                WidthRequest="42"
+                                HeightRequest="42"
+                                Padding="0"
+                                CornerRadius="10"/>
+
+                        <Label x:Name="lbl_criancas_quantidade"
+                               Grid.Column="2"
+                               Text="0"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="#6C55B8"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               WidthRequest="30"/>
+
+                        <Button Grid.Column="3"
+                                Text="+"
+                                Clicked="AumentarCriancas_Clicked"
+                                BackgroundColor="#6C55B8"
+                                TextColor="White"
+                                FontSize="20"
+                                FontAttributes="Bold"
+                                WidthRequest="42"
+                                HeightRequest="42"
+                                Padding="0"
+                                CornerRadius="10"/>
+
+                    </Grid>
+
+                    <Label x:Name="lbl_aviso_adulto"
+                           Text="É necessário informar pelo menos um adulto."
+                           FontSize="11"
+                           TextColor="#8A7DA5"/>
 
                 </VerticalStackLayout>
             </Border>
 
-            <!-- Botão avançar -->
-            <Button Text="AVANÇAR"
-                    FontSize="16"
-                    FontAttributes="Bold"
+            <!-- 02. Período e modalidade -->
+            <Border BackgroundColor="White"
+                    Stroke="#E9E2F5"
+                    StrokeThickness="1"
+                    Padding="20"
+                    StrokeShape="RoundRectangle 20">
+
+                <VerticalStackLayout Spacing="15">
+
+                    <Label x:Name="lbl_titulo_periodo"
+                           Text="02. Período da estadia"
+                           FontSize="21"
+                           FontFamily="KalamBold"
+                           TextColor="#6C55B8"/>
+
+                    <Label x:Name="lbl_como_hospedar"
+                           Text="Como deseja se hospedar?"
+                           FontSize="13"
+                           FontFamily="OpenSansRegular"
+                           TextColor="#777282"/>
+
+                    <Border BackgroundColor="#F7F5FC"
+                            Stroke="#E9E2F5"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 12"
+                            Padding="5">
+
+                        <Picker x:Name="pck_modalidade"
+                                Title="Selecione a modalidade"
+                                TitleColor="#8B8499"
+                                TextColor="#484454"
+                                FontFamily="OpenSansRegular"
+                                SelectedIndexChanged="Modalidade_Changed"/>
+                    </Border>
+
+                    <!-- Check-in -->
+                    <VerticalStackLayout Spacing="7">
+
+                        <Label x:Name="lbl_data_entrada"
+                               Text="Data de entrada"
+                               FontSize="13"
+                               FontFamily="OpenSansSemibold"
+                               TextColor="#777282"/>
+
+                        <Border BackgroundColor="#F7F5FC"
+                                Stroke="#E9E2F5"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 12"
+                                Padding="5">
+
+                            <DatePicker x:Name="dtpck_checkin"
+                                        Format="dd/MM/yyyy"
+                                        TextColor="#484454"
+                                        FontFamily="OpenSansRegular"/>
+                        </Border>
+
+                    </VerticalStackLayout>
+
+                    <!-- Horários do pernoite -->
+                    <VerticalStackLayout x:Name="layout_horarios"
+                                         Spacing="12"
+                                         IsVisible="False">
+
+                        <BoxView HeightRequest="1"
+                                 Color="#EEEAF5"/>
+
+                        <Label x:Name="lbl_titulo_horarios"
+                               Text="Horários do pernoite"
+                               FontSize="15"
+                               FontAttributes="Bold"
+                               TextColor="#6C55B8"/>
+
+                        <Label x:Name="lbl_horario_entrada"
+                               Text="Entrada (entre 18h e 23h)"
+                               FontSize="13"
+                               FontFamily="OpenSansSemibold"
+                               TextColor="#777282"/>
+
+                        <Border BackgroundColor="#F7F5FC"
+                                Stroke="#E9E2F5"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 12"
+                                Padding="5">
+
+                            <TimePicker x:Name="tmpck_entrada"
+                                        Format="HH:mm"
+                                        Time="20:00"
+                                        TextColor="#484454"/>
+                        </Border>
+
+                        <Label x:Name="lbl_horario_saida"
+                               Text="Saída (entre 6h e 10h)"
+                               FontSize="13"
+                               FontFamily="OpenSansSemibold"
+                               TextColor="#777282"/>
+
+                        <Border BackgroundColor="#F7F5FC"
+                                Stroke="#E9E2F5"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 12"
+                                Padding="5">
+
+                            <TimePicker x:Name="tmpck_saida"
+                                        Format="HH:mm"
+                                        Time="08:00"
+                                        TextColor="#484454"/>
+                        </Border>
+
+                    </VerticalStackLayout>
+
+                    <!-- Check-out tradicional -->
+                    <VerticalStackLayout x:Name="layout_checkout"
+                                         Spacing="7">
+
+                        <Label x:Name="lbl_data_saida"
+                               Text="Data de saída"
+                               FontSize="13"
+                               FontFamily="OpenSansSemibold"
+                               TextColor="#777282"/>
+
+                        <Border BackgroundColor="#F7F5FC"
+                                Stroke="#E9E2F5"
+                                StrokeThickness="1"
+                                StrokeShape="RoundRectangle 12"
+                                Padding="5">
+
+                            <DatePicker x:Name="dtpck_checkout"
+                                        Format="dd/MM/yyyy"
+                                        TextColor="#484454"
+                                        FontFamily="OpenSansRegular"/>
+                        </Border>
+
+                    </VerticalStackLayout>
+
+                    <Label x:Name="lbl_info_pernoite"
+                           Text="O check-out será realizado na manhã do dia seguinte."
+                           FontSize="12"
+                           TextColor="#8A7DA5"
+                           IsVisible="False"/>
+
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- 03. Acomodação -->
+            <Border BackgroundColor="White"
+                    Stroke="#E9E2F5"
+                    StrokeThickness="1"
+                    Padding="20"
+                    StrokeShape="RoundRectangle 20">
+
+                <VerticalStackLayout Spacing="15">
+
+                    <Label x:Name="lbl_titulo_acomodacao"
+                           Text="03. Acomodação"
+                           FontSize="21"
+                           FontFamily="KalamBold"
+                           TextColor="#6C55B8"/>
+
+                    <Label x:Name="lbl_escolha_acomodacao"
+                           Text="Escolha a acomodação ideal para você."
+                           FontSize="13"
+                           FontFamily="OpenSansRegular"
+                           TextColor="#777282"/>
+
+                    <Border BackgroundColor="#F7F5FC"
+                            Stroke="#E9E2F5"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 12"
+                            Padding="5">
+
+                        <Picker x:Name="pck_quarto"
+                                Title="Selecione sua acomodação"
+                                TitleColor="#8B8499"
+                                TextColor="#484454"
+                                FontFamily="OpenSansRegular"/>
+                    </Border>
+
+                    <BoxView HeightRequest="1"
+                             Color="#EEEAF5"/>
+
+                    <Label x:Name="lbl_quantidade_quartos"
+                           Text="Quantidade de quartos"
+                           FontSize="14"
+                           FontFamily="OpenSansSemibold"
+                           TextColor="#484454"/>
+
+                    <Grid ColumnDefinitions="*,Auto,Auto,Auto"
+                          ColumnSpacing="10">
+
+                        <Label x:Name="lbl_quartos_desejados"
+                               Text="Quartos desejados"
+                               FontSize="13"
+                               TextColor="#777282"
+                               VerticalOptions="Center"/>
+
+                        <Button Grid.Column="1"
+                                Text="−"
+                                Clicked="DiminuirQuartos_Clicked"
+                                BackgroundColor="#E9E2FA"
+                                TextColor="#6C55B8"
+                                FontSize="20"
+                                FontAttributes="Bold"
+                                WidthRequest="42"
+                                HeightRequest="42"
+                                Padding="0"
+                                CornerRadius="10"/>
+
+                        <Label x:Name="lbl_quartos_quantidade"
+                               Grid.Column="2"
+                               Text="1"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="#6C55B8"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               WidthRequest="30"/>
+
+                        <Button Grid.Column="3"
+                                Text="+"
+                                Clicked="AumentarQuartos_Clicked"
+                                BackgroundColor="#6C55B8"
+                                TextColor="White"
+                                FontSize="20"
+                                FontAttributes="Bold"
+                                WidthRequest="42"
+                                HeightRequest="42"
+                                Padding="0"
+                                CornerRadius="10"/>
+
+                    </Grid>
+
+                    <Label x:Name="lbl_info_capacidade"
+                           Text="A capacidade total será calculada conforme a acomodação e a quantidade de quartos."
+                           FontSize="11"
+                           TextColor="#8A7DA5"/>
+
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Avançar -->
+            <Button x:Name="btn_avancar"
+                    Text="AVANÇAR  →"
+                    Clicked="Avancar_Clicked"
+                    FontSize="15"
+                    FontFamily="OpenSansSemibold"
                     TextColor="White"
-                    BackgroundColor="#512BD4"
-                    CornerRadius="14"
-                    HeightRequest="55"/>
+                    BackgroundColor="#6C55B8"
+                    CornerRadius="16"
+                    HeightRequest="56"
+                    Margin="0,2,0,0"/>
 
             <!-- Rodapé -->
-            <Label Text="Hotel Legal • Sua experiência começa aqui."
-                   FontSize="11"
-                   TextColor="#888888"
-                   HorizontalTextAlignment="Center"
-                   Margin="0,0,0,0"/>
+            <VerticalStackLayout Spacing="10"
+                                 Padding="0,5,0,0">
 
-            <!-- Botão Sobre -->
-            <Button Text="SOBRE O APLICATIVO"
-                    Clicked="Sobre_Clicked"
-                    BackgroundColor="White"
-                    TextColor="#512BD4"
-                    BorderColor="#512BD4"
-                    BorderWidth="1"
-                    CornerRadius="12"
-                    FontAttributes="Bold"
-                    FontSize="12"
-                    HeightRequest="45"
-                    Margin="0,0,0,10"/>
+                <Label x:Name="lbl_rodape"
+                       Text="Hotel Legal • Sua experiência começa aqui."
+                       FontSize="11"
+                       FontFamily="OpenSansRegular"
+                       TextColor="#928BA1"
+                       HorizontalTextAlignment="Center"/>
+
+                <Button x:Name="btn_sobre"
+                        Text="SOBRE O APLICATIVO"
+                        Clicked="Sobre_Clicked"
+                        BackgroundColor="#E9E2FA"
+                        TextColor="#6C55B8"
+                        CornerRadius="13"
+                        FontFamily="OpenSansSemibold"
+                        FontSize="12"
+                        HeightRequest="46"
+                        Margin="0,0,0,8"/>
+
+            </VerticalStackLayout>
 
         </VerticalStackLayout>
     </ScrollView>

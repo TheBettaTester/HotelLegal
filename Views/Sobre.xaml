@@ -4,97 +4,155 @@
              x:Class="MauiAppHotel.Views.Sobre"
              Title="Sobre"
              NavigationPage.HasNavigationBar="False"
-             BackgroundColor="#F5F3FA">
+             BackgroundColor="#F7F5FC">
 
-    <VerticalStackLayout Padding="25"
-                         Spacing="20"
-                         VerticalOptions="Center">
+    <ScrollView>
+        <VerticalStackLayout Padding="22"
+                             Spacing="22"
+                             VerticalOptions="Center">
 
-        <Border BackgroundColor="#512BD4"
-                StrokeThickness="0"
-                Padding="30"
-                StrokeShape="RoundRectangle 24">
+            <!-- Cabeçalho -->
+            <Border BackgroundColor="#6C55B8"
+                    StrokeThickness="0"
+                    Padding="28"
+                    StrokeShape="RoundRectangle 24">
 
-            <VerticalStackLayout Spacing="15"
-                                 HorizontalOptions="Center">
+                <VerticalStackLayout Spacing="13"
+                                     HorizontalOptions="Center">
 
-                <Label Text="HOTEL LEGAL"
-                       FontSize="30"
-                       FontAttributes="Bold"
-                       TextColor="White"
-                       HorizontalTextAlignment="Center"/>
+                    <Border BackgroundColor="#8876C9"
+                            StrokeThickness="0"
+                            WidthRequest="76"
+                            HeightRequest="76"
+                            StrokeShape="RoundRectangle 24"
+                            HorizontalOptions="Center">
 
-                <Label Text="Sua estadia começa aqui!"
-                       FontSize="15"
-                       TextColor="#DFD8F7"
-                       HorizontalTextAlignment="Center"/>
+                        <Label Text="⌂"
+                               FontSize="48"
+                               TextColor="White"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"/>
+                    </Border>
 
-                <Label Text="Sobre o aplicativo"
-                       FontSize="20"
-                       FontAttributes="Bold"
-                       TextColor="White"
-                       Margin="0,15,0,0"
-                       HorizontalTextAlignment="Center"/>
+                    <Label Text="HOTEL LEGAL"
+                           FontSize="27"
+                           FontAttributes="Bold"
+                           CharacterSpacing="2"
+                           FontFamily="OpenSansSemibold"
+                           TextColor="White"
+                           HorizontalTextAlignment="Center"/>
 
-            </VerticalStackLayout>
-        </Border>
+                    <Label x:Name="lblSlogan"
+                           Text="Sua estadia começa aqui!"
+                           FontSize="17"
+                           FontFamily="Kalam"
+                           TextColor="#E9E2FA"
+                           HorizontalTextAlignment="Center"/>
 
-        <Border BackgroundColor="White"
-                Stroke="#E5E0F0"
-                StrokeThickness="1"
-                Padding="25"
-                StrokeShape="RoundRectangle 20">
+                    <BoxView HeightRequest="1"
+                             WidthRequest="65"
+                             Color="#BDB0E8"
+                             HorizontalOptions="Center"
+                             Margin="0,5"/>
 
-            <VerticalStackLayout Spacing="18">
+                    <Label x:Name="lblSobreAplicativo"
+                           Text="SOBRE O APLICATIVO"
+                           FontSize="13"
+                           FontAttributes="Bold"
+                           CharacterSpacing="2"
+                           TextColor="White"
+                           HorizontalTextAlignment="Center"/>
 
-                <VerticalStackLayout Spacing="5">
-                    <Label Text="DESENVOLVEDORA"
+                    <Label x:Name="lblDescricaoSobre"
+                           Text="Conheça um pouco mais sobre o projeto."
+                           FontSize="12"
+                           TextColor="#F3EFFD"
+                           HorizontalTextAlignment="Center"/>
+
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Informações -->
+            <Border BackgroundColor="White"
+                    Stroke="#E9E2F5"
+                    StrokeThickness="1"
+                    Padding="24"
+                    StrokeShape="RoundRectangle 22">
+
+                <VerticalStackLayout Spacing="20">
+
+                    <Label x:Name="lblInformacoesProjeto"
+                           Text="✦  INFORMAÇÕES DO PROJETO"
                            FontSize="12"
                            FontAttributes="Bold"
-                           TextColor="#888888"
+                           CharacterSpacing="1"
+                           TextColor="#928BA1"
                            HorizontalTextAlignment="Center"/>
 
-                    <Label Text="Ananda Predi"
-                           FontSize="23"
-                           FontAttributes="Bold"
-                           TextColor="#512BD4"
-                           HorizontalTextAlignment="Center"/>
+                    <!-- Desenvolvedora -->
+                    <VerticalStackLayout Spacing="8">
+
+                        <Label x:Name="lblDesenvolvedora"
+                               Text="DESENVOLVEDORA"
+                               FontSize="11"
+                               FontAttributes="Bold"
+                               CharacterSpacing="1"
+                               TextColor="#928BA1"
+                               HorizontalTextAlignment="Center"/>
+
+                        <Label Text="Ananda Predi"
+                               FontSize="25"
+                               FontFamily="KalamBold"
+                               TextColor="#6C55B8"
+                               HorizontalTextAlignment="Center"/>
+
+                    </VerticalStackLayout>
+
+                    <BoxView HeightRequest="1"
+                             Color="#EEEAF5"/>
+
+                    <!-- Ano -->
+                    <VerticalStackLayout Spacing="8">
+
+                        <Label x:Name="lblAnoDesenvolvimento"
+                               Text="ANO DE DESENVOLVIMENTO"
+                               FontSize="11"
+                               FontAttributes="Bold"
+                               CharacterSpacing="1"
+                               TextColor="#928BA1"
+                               HorizontalTextAlignment="Center"/>
+
+                        <Label Text="2026"
+                               FontSize="25"
+                               FontFamily="KalamBold"
+                               TextColor="#6C55B8"
+                               HorizontalTextAlignment="Center"/>
+
+                    </VerticalStackLayout>
+
                 </VerticalStackLayout>
+            </Border>
 
-                <BoxView HeightRequest="1"
-                         Color="#E5E0F0"/>
+            <!-- Botão voltar -->
+            <Button x:Name="btnVoltar"
+                    Text="←  VOLTAR"
+                    FontSize="15"
+                    FontFamily="OpenSansSemibold"
+                    TextColor="White"
+                    BackgroundColor="#6C55B8"
+                    CornerRadius="16"
+                    HeightRequest="55"
+                    Clicked="Voltar_Clicked"/>
 
-                <VerticalStackLayout Spacing="5">
-                    <Label Text="ANO DE DESENVOLVIMENTO"
-                           FontSize="12"
-                           FontAttributes="Bold"
-                           TextColor="#888888"
-                           HorizontalTextAlignment="Center"/>
+            <!-- Rodapé -->
+            <Label x:Name="lblRodape"
+                   Text="Hotel Legal • 2026"
+                   FontSize="11"
+                   FontFamily="OpenSansRegular"
+                   TextColor="#928BA1"
+                   HorizontalTextAlignment="Center"/>
 
-                    <Label Text="2026"
-                           FontSize="23"
-                           FontAttributes="Bold"
-                           TextColor="#512BD4"
-                           HorizontalTextAlignment="Center"/>
-                </VerticalStackLayout>
-
-            </VerticalStackLayout>
-        </Border>
-
-        <Button Text="VOLTAR"
-                FontSize="16"
-                FontAttributes="Bold"
-                TextColor="White"
-                BackgroundColor="#512BD4"
-                CornerRadius="14"
-                HeightRequest="55"
-                Clicked="Voltar_Clicked"/>
-
-        <Label Text="Hotel Legal • 2026"
-               FontSize="11"
-               TextColor="#888888"
-               HorizontalTextAlignment="Center"/>
-
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
 
 </ContentPage>

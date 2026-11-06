@@ -12,29 +12,23 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
 
-        <!-- Versão do MAUI -->
         <MauiVersion>10.0.110</MauiVersion>
 
-        <!-- Aplicativo -->
         <ApplicationTitle>Hotel Legal</ApplicationTitle>
         <ApplicationId>com.companyname.mauiapphotel</ApplicationId>
         <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
         <ApplicationVersion>1</ApplicationVersion>
 
-        <!-- Executar Windows sem MSIX -->
         <WindowsPackageType Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">None</WindowsPackageType>
 
-        <!-- Plataformas suportadas -->
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
         <TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
     </PropertyGroup>
 
     <ItemGroup>
-        <!-- Ícone -->
-        <MauiIcon Include="Resources\AppIcon\appicon.svg"
-                  ForegroundFile="Resources\AppIcon\appiconfg.svg"
-                  Color="#512BD4" />
+        <!-- Ícone personalizado -->
+        <MauiIcon Include="Resources\AppIcon\appicon.svg" />
 
         <!-- Tela de abertura -->
         <MauiSplashScreen Include="Resources\Splash\splash.svg"
@@ -59,6 +53,11 @@
         <None Remove="Resources\Fonts\Kalam-Bold.ttf" />
         <None Remove="Resources\Fonts\Kalam-Light.ttf" />
         <None Remove="Resources\Fonts\Kalam-Regular.ttf" />
+
+        <!-- Copiar ícone da janela para a pasta de saída -->
+        <None Update="Platforms\Windows\appicon.ico"
+              CopyToOutputDirectory="PreserveNewest"
+              TargetPath="appicon.ico" />
     </ItemGroup>
 
     <ItemGroup>

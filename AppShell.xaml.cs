@@ -1,10 +1,7 @@
-﻿namespace MauiAppHotel
+﻿
+namespace MauiAppHotel
 {
-    public partial class AppShell : Shell
+    public partial class AppShell
     {
-        public AppShell()
-        {
-            InitializeComponent();
-        }
     }
 }
